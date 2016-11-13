@@ -14,20 +14,8 @@
 			margin-top: 5%;
 			padding: 20px;
 			height: 300px;
-			position: relative;
-			background-color: white;
+			/*background-color: white;*/
 		}
-
-		.inner_info_seg {
-			margin-left: 3%;
-			margin-right: 3%;
-			margin-top: 5%;
-			padding: 20px;
-			height: 300px;
-			position: relative;
-			background-color: white;
-		}
-
 		.seg_header {
 			padding: 10px;
 			font-size: 15pt;
@@ -49,6 +37,8 @@
 			white-space: -o-pre-wrap;   /* Opera 7 */
 			word-wrap: break-word;      /* IE */
 		}
+
+
 		</style>
 	</head>
 
@@ -66,6 +56,15 @@
 			</nav>
 		</div>
 
+		<div class="card info_seg"  style="height: auto;">
+			<ul class="collection">
+				<li class="collection-item">Alvin</li>
+				<li class="collection-item">Alvin</li>
+				<li class="collection-item">Alvin</li>
+				<li class="collection-item">Alvin</li>
+			</ul>
+		</div>
+
 
 		<div class="card info_seg" style="height: auto;">
 			<div class="seg_header">
@@ -78,13 +77,30 @@
 		<div class="card info_seg" style="height: auto">
 			<div class="seg_header">Item 1</div>
 
-			<div class="res_header">
-				Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.Anything.
+			<div class="res_header" >
+				ID = <span id="id"></span>
+				MSG = <span id="msg"></span>
 			</div> <br/>
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://cdn.bootcss.com/materialize/0.97.5/js/materialize.min.js"></script>
+
+		<script>
+			$.ajax ({
+				url: "http://localhost:3000/with_para",
+				data: {id: 10, msg: "aaaa"},
+				success (data) {
+					alert(JSON.stringify(data));
+
+
+					document.getElementById('id').innerHTML = data.id;
+					document.getElementById('msg').innerHTML = data.msg;
+				}
+			});
+
+		</script>
+
 	</body>
 
 </html>

@@ -2,7 +2,7 @@ var express = require ('express');
 var router = express.Router();
 
 router.get ('/test', (req, res) => {
-	res.send ("Something ... ");
+	res.send ("Somethinadfsadfsg ... ");
 });
 
 router.get ('/with_para', (req, res) => {
