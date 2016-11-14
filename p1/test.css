@@ -1,0 +1,21 @@
+td {border: 1px black solid;}
+th {border: 1px rgb(98,23,98) solid;}
+
+body {
+	text-align: center;
+}
+.container {
+	border: 1px black solid;
+	width: 40%;
+	margin: 20px;
+	padding: 10px;
+
+	float: left;
+}
+.header {
+	color: blue;
+}
+
+p .xxx {
+
+}
