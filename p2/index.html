@@ -1,0 +1,170 @@
+<html>
+	<head>
+		<title>Materialize CSS</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link href="https://cdn.bootcss.com/material-design-icons/2.2.0/iconfont/material-icons.css" rel="stylesheet">
+		<link href="https://cdn.bootcss.com/materialize/0.97.5/css/materialize.min.css" rel="stylesheet" media="screen,projection">
+
+		<style>
+		.info_seg {
+			margin-left: 5%;
+			margin-right: 5%;
+			margin-top: 5%;
+			padding: 20px;
+		}
+		.seg_header {
+			padding: 10px;
+			font-size: 15pt;
+			color: rgb(90, 90, 90);
+			/*text-align: center;*/
+			font-size: 25pt;
+			padding-top: 10px;
+		}
+
+		.res_header {
+			padding: 10px;
+			padding-left: 0px;
+			font-size: 13pt;
+			color: rgb(110, 110, 110);
+
+			white-space: pre-wrap;      /* CSS3 */
+			white-space: -moz-pre-wrap; /* Firefox */
+			white-space: -pre-wrap;     /* Opera <7 */
+			white-space: -o-pre-wrap;   /* Opera 7 */
+			word-wrap: break-word;      /* IE */
+		}
+
+        .email {
+            font-size: 14pt;
+			color: rgb(110, 110, 110);
+            text-decoration: underline;
+        }
+
+
+		</style>
+	</head>
+
+	<body>
+
+		<div class="navbar-fixed">
+			<nav>
+			<div class="nav-wrapper">
+				<a href="index.html" style="padding-left:3%;font-size:15pt;text-decoration:none;">Why Not Shopping</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li style="font-size: 35pt;"><a>My Account</a></li>
+					<li style="font-size: 35pt;"><a>Sign Out</a></li>
+				</ul>
+			</div>
+			</nav>
+		</div>
+
+        <div class="card info_seg" style="width: 40%; float:left">
+            <div class="row">
+                <div class="input-field col s4">
+                    <input placeholder="First Name" id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s4">
+                    <input placeholder="Second Name" id="last_name" type="text" class="validate">
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s8">
+                    <input placeholder="Email" id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s8">
+                    <input placeholder="Password" id="passwd" type="password" class="validate">
+                    <label for="passwd">Password</label>
+                </div>
+            </div>
+        </div>
+        <div class="card info_seg" style="width: 40%; float:left;">
+            <div class="res_header" style="text-align: center;">Fill in the form on the left.</div>
+
+            <br/><br/><br/>
+
+            <div style="text-align:center">
+                <a class="waves-effect waves-light btn" id="register"><i class="material-icons left">cloud</i>Register</a>
+            </div>
+
+            <br/><br/><br/>
+
+            <div id="name_list"></div>
+
+        </div>
+
+        <footer class="page-footer" style="position: fixed; bottom: 0px; width: 100%;">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Footer</h5>
+                        <p class="grey-text text-lighten-4">Something random.Something random.Something random.Something random.Something random.Something random.Something random.Something random.Something random.Something random.Something random.Something random.Something random.</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2016 All Fucking Rights Reserved
+                    <a class="grey-text text-lighten-4 right" href="https://github.com/RoyTimes">Song Zhou</a>
+                </div>
+            </div>
+        </footer>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/materialize/0.97.5/js/materialize.min.js"></script>
+
+		<script>
+            $(document).ready (function (){
+                $.ajax({
+                    url: "http://localhost:3000/form/all",
+                    method: "GET", success (data) {
+                        var html = $("#name_list").html();
+
+                        for (var user in data)
+                            html = html + "<br/><div class=\"email center\">" + data[user].email + "</div>";
+
+                        $("#name_list").html(html);
+                    }
+                })
+            });
+            $("#register").click (function () {
+
+                alert ("about to process and upload your infomation");
+
+                var name = $("#first_name").val() + "  " + $("#last_name").val();
+                var email = $("#email").val();
+                var passwd = $("#passwd").val();
+
+                $.ajax ({
+                    url: "http://localhost:3000/form",
+                    method: "POST", data: {
+                        name: name, email: email, passwd: passwd
+                    }, success (data) {
+                        alert (data);
+                        location.reload();
+                    }
+                });
+            });
+		</script>
+
+	</body>
+
+</html>
