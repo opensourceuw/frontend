@@ -9,3 +9,11 @@ Index of content for P2
 
 === Bonus
 1. Website Visit Record
+
+
+>>>>>>>>>>>>>>>>
+
+Read-list
+
+1. https://github.com/getify/You-Dont-Know-JS -- A Deep Look into JavaScript(Recommend)
+2. https://expressjs.com/en/guide/routing.html -- Express.js Framework guide
