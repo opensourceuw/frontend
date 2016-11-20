@@ -134,7 +134,7 @@
 		<script>
             $(document).ready (function (){
                 $.ajax({
-                    url: "http://localhost:3000/form/all",
+                    url: "http://45.78.6.190:2619/form/all",
                     method: "GET", success (data) {
                         var html = $("#name_list").html();
 
@@ -154,7 +154,7 @@
                 var passwd = $("#passwd").val();
 
                 $.ajax ({
-                    url: "http://localhost:3000/form",
+                    url: "http://45.78.6.190:2619/form",
                     method: "POST", data: {
                         name: name, email: email, passwd: passwd
                     }, success (data) {
